@@ -29,19 +29,34 @@
 #define LOG_PORT        Serial  /* Serial port for console logging */
 #define CONNECT_TIMEOUT 15000   /* 15 seconds */
 
-#define NUM_PIXELS_A 300  /* Number of pixels */
+#define NUM_OUTPUTS_A 170  /* Number of pixels */
 #define UNIVERSE_A 1      /* Universe to listen for */
 #define CHANNEL_START_A 1 /* Channel to start listening at */
-#define DATA_PIN_A 14      /* Pixel output - GPIO14 / nodeMCU D5 */
 
-#define NUM_PIXELS_B 300  /* Number of pixels */
+#define NUM_OUTPUTS_B 130  /* Number of pixels */
 #define UNIVERSE_B 2      /* Universe to listen for */
 #define CHANNEL_START_B 1 /* Channel to start listening at */
-#define DATA_PIN_B 12      /* Pixel output - GPIO12 / nodeMCU D6 */
 
-#define NUM_PIXELS_C 50  /* Number of pixels */
+#define NUM_OUTPUTS_C 170  /* Number of pixels */
 #define UNIVERSE_C 3      /* Universe to listen for */
 #define CHANNEL_START_C 1 /* Channel to start listening at */
+
+#define NUM_OUTPUTS_D 130  /* Number of pixels */
+#define UNIVERSE_D 4      /* Universe to listen for */
+#define CHANNEL_START_D 1 /* Channel to start listening at */
+
+#define NUM_OUTPUTS_E 50  /* Number of pixels */
+#define UNIVERSE_E 5      /* Universe to listen for */
+#define CHANNEL_START_E 1 /* Channel to start listening at */
+
+//Neopixel configurations ----------------------------------------------
+
+#define NUM_PIXELS_A 300  /* Number of pixels */
+#define NUM_PIXELS_B 300  /* Number of pixels */
+#define NUM_PIXELS_C 50  /* Number of pixels */
+
+#define DATA_PIN_A 14      /* Pixel output - GPIO14 / nodeMCU D5 */
+#define DATA_PIN_B 12      /* Pixel output - GPIO12 / nodeMCU D6 */
 #define DATA_PIN_C 13      /* Pixel output - GPIO13 / nodeMCU D7 */
 
 const char ssid[] = "DLwireless";         /* Replace with your SSID */
@@ -84,7 +99,7 @@ int initWifi() {
         LOG_PORT.print(F("Connected with IP: "));
         LOG_PORT.println(WiFi.localIP());
 
-        e131.begin(E131_MULTICAST, UNIVERSE_A, UNIVERSE_B - UNIVERSE_A + 1);
+        e131.begin(E131_MULTICAST, UNIVERSE_A, UNIVERSE_E - UNIVERSE_A + 1);
 
         digitalWrite(D4, LOW);  //indicate connected
     }
@@ -283,26 +298,79 @@ void loop() {
     if(e131.parsePacket())
     {
         if (e131.universe == UNIVERSE_A) {
-            for (int i = 0; i < NUM_PIXELS_A; i++) {
+            //Serial.print("Univ A \t");
+            for (int i = 0; i < NUM_OUTPUTS_A; i++) {
                 int j = i * 3 + (CHANNEL_START_A - 1);
                 pixels_a.setPixelColor(i, e131.data[j], e131.data[j+1], e131.data[j+2]);
+                /*
+                Serial.print(e131.data[j]);
+                Serial.print("\t");
+                Serial.print(e131.data[j+1]);
+                Serial.print("\t");
+                Serial.println(e131.data[j+2]);
+                */
+            }
+            //pixels_a.show();
+        }
+        if (e131.universe == UNIVERSE_B) {
+            //Serial.print("Univ B \t");
+            for (int i = 0; i < NUM_OUTPUTS_B; i++) {
+                int j = i * 3 + (CHANNEL_START_B - 1);
+                pixels_a.setPixelColor(i + NUM_OUTPUTS_A, e131.data[j], e131.data[j+1], e131.data[j+2]);
+                /*
+                Serial.print(e131.data[j]);
+                Serial.print("\t");
+                Serial.print(e131.data[j+1]);
+                Serial.print("\t");
+                Serial.println(e131.data[j+2]);
+                */
             }
             pixels_a.show();
         }
-        if (e131.universe == UNIVERSE_B) {
-            for (int i = 0; i < NUM_PIXELS_B; i++) {
-                int j = i * 3 + (CHANNEL_START_B - 1);
+        if (e131.universe == UNIVERSE_C) {
+            //Serial.print("Univ C \t");
+            for (int i = 0; i < NUM_OUTPUTS_C; i++) {
+                int j = i * 3 + (CHANNEL_START_C - 1);
                 pixels_b.setPixelColor(i, e131.data[j], e131.data[j+1], e131.data[j+2]);
+                /*
+                Serial.print(e131.data[j]);
+                Serial.print("\t");
+                Serial.print(e131.data[j+1]);
+                Serial.print("\t");
+                Serial.println(e131.data[j+2]);
+                */
+            }
+            //pixels_b.show();
+        }
+        if (e131.universe == UNIVERSE_D) {
+            //Serial.print("Univ D \t");
+            for (int i = 0; i < NUM_OUTPUTS_D; i++) {
+                int j = i * 3 + (CHANNEL_START_D - 1);
+                pixels_b.setPixelColor(i + NUM_OUTPUTS_C, e131.data[j], e131.data[j+1], e131.data[j+2]);
+                /*
+                Serial.print(e131.data[j]);
+                Serial.print("\t");
+                Serial.print(e131.data[j+1]);
+                Serial.print("\t");
+                Serial.println(e131.data[j+2]);
+                */
             }
             pixels_b.show();
         }
-        if (e131.universe == UNIVERSE_C) {
-            for (int i = 0; i < NUM_PIXELS_C; i++) {
-                int j = i * 3 + (CHANNEL_START_C - 1);
+        if (e131.universe == UNIVERSE_E) {
+            //Serial.print("Univ E \t");
+            for (int i = 0; i < NUM_OUTPUTS_E; i++) {
+                int j = i * 3 + (CHANNEL_START_E - 1);
                 pixels_c.setPixelColor(i, e131.data[j], e131.data[j+1], e131.data[j+2]);
+                /*
+                Serial.print(e131.data[j]);
+                Serial.print("\t");
+                Serial.print(e131.data[j+1]);
+                Serial.print("\t");
+                Serial.println(e131.data[j+2]);
+                */
             }
             pixels_c.show();
         }
-        
     }
 }
