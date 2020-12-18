@@ -92,7 +92,7 @@ Each universe must start at channel 1. The channels are **relative** to their ow
 3. On the top-right corner, select **Streaming ACN (E1.32)** from the dropdown list. Click the "Add" button.
 4. Give your controller a name. In this case, I have named it *BunnyPixel (E1.31)*. Right-click on it and select **Configure**.
 5. Enter the values as shown in the Hardware Setup Summary. If your hardware is different, ensure that the pixels are calculated properly.
-6. Select the "Destination" and enter the IP address of your Neopixel controller.
+6. Select the "Destination" and enter the IP address of your Neopixel controller. Choose **Unicast** to the IP address you specified.
 7. On the top-left corner, select **Generic Numbered Group** from the dropdown list. Click the "Add" button. If your reel of lights is for the roof, name it "Roof Lights" with a prefix of "roof". Be creative and meaningful with these names since it will help later.
 8. Keep performing step 7 until you have added all your light reels and strands as "Elements".
 9. Select the Element you want to assign to the universe. This is known as "patching". In other words, select all the items in "Roof Lights" and then select the items on the right-side Controller that you want to map them to.
