@@ -288,12 +288,12 @@ void setup() {
     }
     Serial.println("mDNS responder started");
 
-    server.on ( "/", handleRoot );
-    server.begin();
+    //server.on ( "/", handleRoot );
+    //server.begin();
 }
 
 void loop() {
-    server.handleClient();
+    //server.handleClient();
     /* Parse a packet and update pixels */
     if(e131.parsePacket())
     {
@@ -310,7 +310,7 @@ void loop() {
                 Serial.println(e131.data[j+2]);
                 */
             }
-            //pixels_a.show();
+            pixels_a.show();
         }
         if (e131.universe == UNIVERSE_B) {
             //Serial.print("Univ B \t");
@@ -340,7 +340,7 @@ void loop() {
                 Serial.println(e131.data[j+2]);
                 */
             }
-            //pixels_b.show();
+            pixels_b.show();
         }
         if (e131.universe == UNIVERSE_D) {
             //Serial.print("Univ D \t");
