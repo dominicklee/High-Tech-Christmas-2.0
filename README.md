@@ -107,3 +107,28 @@ Each universe must start at channel 1. The channels are **relative** to their ow
 18. Map the distribution of Elements per string. Save and exit.
 
 Now you are ready to sequence some songs!
+
+## Sequencing Tips ##
+Most tutorials normally just stop here and assume you know everything there is to know about sequencing in Vixen. If you are a season professional already, great! For the rest of us, I will share some key tips for you to get started with sequencing.
+
+1. First, choose a song (ideally a nice Christmas favorite) with a strong bass or rhythm track. Don't choose classical or slow songs for your first try. Download the MP3 for the song. (If you are playing it publicly, make sure you have obtained the rights)
+2. Click **New Sequence** button and type the name of your song.
+3. You will see the "Elements" of your display as "Tracks" on the left. You will see a blank timeline. Click **Tools** and **Audio** -> **Associate Audio**. At this point, you can choose to do **Beat/Bar Detection**, enter your key signature, and try to see if the system automatically generates the right bars.
+4. If you find that the automatic beat detection is inaccurate (sometimes that happens), then go to the bottom-right corner and select the tab called **Mark Collections** and delete the automatic beat map. We will create this automatically.
+5. On the top right, click **New** to make a new Mark Collection. Give it a name.
+6. Set your song speed temporarily to 50-60% to make it easier for yourself to map the beats. Hit the **spacebar** to begin the song.
+7. Hold down the **CTRL** key while you hit the **spacebar** along with every beat of the measure. Pretend you are a conductor in an orchestra and do your best to be on top of the beat.
+8. You can always stop the song by hitting the **spacebar** key alone. Or hit the **F5** key to play/pause.
+9. Once you are done, drag some basic lighting effects. I normally set the brightness to 30-50%. If you have a weak power supply or insufficient DC injected supplies, you will see some flickering or unintended effects at 100% brightness.
+10. You can start the show by going to the Main Vixen Window and clicking **Tools** -> **Web Server** and visiting that URL to see your control panel online. You can even control your display from your smartphone!
+
+## Key Tips and Challenges ##
+While setting up this fantastic display for the first time, it did not come without its own challenges. Here are some lessons learned and pro-tips here that may be helpful to keep in mind:
+
+- When provisioning your cable length, make sure you **measure the dimensions of the roof edges** where you plan to mount the LED strips. Using a measuring tape, measure all the way from your mounting location to the point inside your house or garage where you intend to plug in the DC power supply. This is to avoid a situation where you are short of wire length to reach the power supply or make compromises to your mounting location.
+- If your lights are more than 15 ft away from your power source, **make sure your wires are 10 AWG** or less (thick wires needed) to provide sufficient DC voltage to the lights with minimal voltage drop. Remember that the longer you extend your cables, the more power is lost along the way.
+- If possible, buy **two DC power supplies** to inject power at both ends of your LED strips, especially if you exceed a 16.4 ft strand or intend to extend it. In my situation, there is noticeable power drop when I set the LEDs to the white color. The end of the reel fades slightly yellow-ish color.
+- Make sure you securely nail your the connectors to the wall if possible. This prevents outsiders from tampering or putting tension on the Neopixel driver unit.
+- If you want a "big lights show", do make sure you always buy an extra reel or two just in case you need more lights to cover your perimeter. Your setup could always use an upgrade in the future.
+- Dedicate a Windows tablet and use the **Vixen show scheduler** to automate your show. This part seals the deal and makes your show operate all on its own.
+- In addition to sequencing your songs, make a Vixen sequence called **Post Sequence** where you put basic light patterns. This should be set and used as the default before and after your song plays. Otherwise, your house goes dark after the music ends.
